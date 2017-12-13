@@ -47,6 +47,7 @@ alcohol = wine.iloc[:, 10]
 feature_names = wine.columns.values[:11]
 # New dict with column names
 stats = {k: {} for k in feature_names}
+pearson_list = []
 
 # Print pearson for each column
 for i in range(11):
@@ -56,11 +57,25 @@ for i in range(11):
 
     # add pearson's r information to dict
     stats[feature_name]['pearson_r'] = pearson_r[0]
-    print('', feature_name, 'r: ', pearson_r[0])
+    # add to pearson_list with absolute values to compare with feature importances
+    pearson_list.append(math.fabs(pearson_r[0]))
+    # print('', feature_name, 'r: ', pearson_r[0])
 
-print(stats)
+# print(stats)
 
-# TODO: create horizontal bar chart and compare to feature importances
+# TODO: create horizontal bar chart with pearson and compare to feature importances
+# y label are features, labels going in reverse order
+# x should be pearson r value
+y_pos = np.arange(11)
+
+fig, ax = plt.subplots()
+
+ax.barh(y_pos, pearson_list)
+ax.set_yticks(y_pos)
+ax.set_yticklabels(feature_names)
+ax.set_xlabel('Pearson R (abs)')
+
+plt.show()
 
 # pearson_alcohol = sp.stats.pearsonr(alcohol, target)
 # pearson_sulphates = sp.stats.pearsonr(sulphates, target)
