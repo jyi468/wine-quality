@@ -11,7 +11,6 @@ from sklearn.ensemble import GradientBoostingRegressor
 
 wine = pd.read_csv("data/winequality-red.csv", sep=';')
 
-
 # Pearson's Correlation Coefficient between alcohol and quality = (0.47616632400113607, 2.8314769747769775e-91)
 # p-value is number between 0 and 1 represeting probability data  2.8314769747769775e-91
 # r = 0.47616632400113607
