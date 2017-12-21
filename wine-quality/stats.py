@@ -151,8 +151,12 @@ def scatter_wine(data):
 
 
 def main():
-    # TODO: Remove outliers
     # print(wine.describe())
+
+    # Write to excel spreadsheet
+    # writer = pd.ExcelWriter('descriptive_stats.xlsx')
+    # wine.describe().to_excel(writer, 'Sheet1')
+    # writer.save()
 
     # Put data into correct format. X data will be all columns except quality. y data will be quality (target)
     data = wine.iloc[:, 0:11]
@@ -168,7 +172,7 @@ def main():
 
     # Main Plotting/Analysis Functionality
     # plot_pearson_r_horizontal(wine, stats, target, feature_names)
-    plot_box(wine)
+    # plot_box(wine)
     # plot_feature_histograms(wine)
     # plot_ml(data, target, "rfr")
     # scatter_wine(wine)
