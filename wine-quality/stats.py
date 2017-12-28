@@ -144,8 +144,12 @@ def plot_ml(data, target, type):
 
 def scatter_wine(data):
     # Most recent pandas uses pd.plotting.scatter_matrix
-    grr = pd.scatter_matrix(data, figsize=(30, 30), marker='o',
+    axes = pd.scatter_matrix(data, figsize=(30, 30), marker='o',
                             hist_kwds={'bins': 20}, s=40, alpha=.8)
+    corr = data.corr().as_matrix()
+    # Add Pearson correlation data to plot
+    for i, j in zip(*plt.np.triu_indices_from(axes, k=1)):
+        axes[i, j].annotate("%.3f" % corr[i, j], (0.8, 0.8), xycoords='axes fraction', ha='center', va='center')
     plt.savefig("scatter.png")
     # plt.show()
 
