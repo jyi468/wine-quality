@@ -144,9 +144,10 @@ def plot_ml(data, target, type):
 
 def scatter_wine(data):
     # Most recent pandas uses pd.plotting.scatter_matrix
-    grr = pd.scatter_matrix(data, figsize=(20, 20), marker='o',
-                            hist_kwds={'bins': 20}, s=60, alpha=.8)
-    plt.show()
+    grr = pd.scatter_matrix(data, figsize=(30, 30), marker='o',
+                            hist_kwds={'bins': 20}, s=40, alpha=.8)
+    plt.savefig("scatter.png")
+    # plt.show()
 
 
 def main():
@@ -174,7 +175,7 @@ def main():
     # plot_box(wine)
     # plot_feature_histograms(wine)
     # plot_ml(data, target, "rfr")
-    # scatter_wine(wine)
+    scatter_wine(wine)
 
     # TODO list
     # Show data fitting before and after outliers
